@@ -136,9 +136,13 @@ def testPRT(dir_path, obj_path, n=40):
 def multiTestPRT(root_dir_path, n=40):
     for path, subdirs, files in os.walk(root_dir_path):
         for file in files:
-            filepath = os.path.join(path,file)
-            dir_path = os.path.dirname(filepath)
-            testPRT(dir_path, filepath, n)
+            file_path = os.path.join(path,file)
+            dir_path = os.path.dirname(file_path)
+            file_ext = os.path.splitext(file_path)
+            
+            if (file_ext[1] == '.obj'):
+                print(file_path)
+                testPRT(dir_path, file_path, n)
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
