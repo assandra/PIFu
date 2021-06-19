@@ -28,12 +28,14 @@ def train(opt):
     # set cuda
     cuda = torch.device('cuda:%d' % opt.gpu_id)
 
+    ### POTENTIALLY CHANGE HERE
     train_dataset = TrainDataset(opt, phase='train')
     test_dataset = TrainDataset(opt, phase='test')
 
     projection_mode = train_dataset.projection_mode
 
-    # create data loader
+    # create data loader#
+    ### POTENTIALLY CHANGE HERE
     train_data_loader = DataLoader(train_dataset,
                                    batch_size=opt.batch_size, shuffle=not opt.serial_batches,
                                    num_workers=opt.num_threads, pin_memory=opt.pin_memory)
